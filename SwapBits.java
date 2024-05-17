@@ -72,3 +72,35 @@ Binary Representation of 7: 000...0111
 
 After swapping adjacent bits: 000...1011 (11)
 */
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Main. */
+        Scanner sc = new Scanner(System.in);
+        int T =sc.nextInt();
+       
+        while(T-- > 0)
+        {
+           
+            long n = sc.nextLong();
+             long lsb_bit1 = 0;
+        long lsb_bit2 = 0;
+      
+            for(int i=0;i<32;i=i+2)
+            {
+                lsb_bit1 = (n>>i)&1;
+                lsb_bit2 = (n>>(i+1))&1;
+                if(lsb_bit1 != lsb_bit2)
+                {
+                    n = n^(1<<i);
+                    n = n^(1<<i+1);
+                }
+            }
+            System.out.println(n);
+        }
+          
+    }
+}
